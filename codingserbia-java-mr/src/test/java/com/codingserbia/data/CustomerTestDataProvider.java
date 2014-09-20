@@ -27,11 +27,11 @@ public class CustomerTestDataProvider {
     private static final ObjectMapper jsonMapper = new ObjectMapper();
 
     public static final Text CATEGORY_4_MAPREDUCE_OUTPUT = new Text(
-                    "{\"customerCategoryId\":4,\"customerCategoryDescription\":\"30-40 male\",\"products\":[{\"id\":1229,\"name\":\"Candy ugradna rerna FS 635 AQUA\"}]}");
+                    "{\"customerCategoryId\":4,\"customerCategoryDescription\":\"30-40 male\",\"products\":[{\"id\":1229,\"name\":\"Candy ugradna rerna FS 635 AQUA\"}],\"averageNumberOfViews\":2.0,\"averageNumberOfPurchases\":1.0,\"totalPurchase\":44750.0}");
     public static final Text CATEGORY_5_MAPREDUCE_OUTPUT = new Text(
-                    "{\"customerCategoryId\":5,\"customerCategoryDescription\":\"40-50 male\",\"products\":[{\"id\":1223,\"name\":\"Bosch ugradna rerna HBA 23RN61\"},{\"id\":1222,\"name\":\"Bosch ugradna rerna HBA 23B252E\"},{\"id\":1405,\"name\":\"Samsung ugradna mikrotalasna rerna FG 87SST\"},{\"id\":1304,\"name\":\"Panasonic televizor LED LCD TX-32AS400E\"}]}");
+                    "{\"customerCategoryId\":5,\"customerCategoryDescription\":\"40-50 male\",\"products\":[{\"id\":1223,\"name\":\"Bosch ugradna rerna HBA 23RN61\"},{\"id\":1222,\"name\":\"Bosch ugradna rerna HBA 23B252E\"},{\"id\":1405,\"name\":\"Samsung ugradna mikrotalasna rerna FG 87SST\"},{\"id\":1304,\"name\":\"Panasonic televizor LED LCD TX-32AS400E\"}],\"averageNumberOfViews\":2.0,\"averageNumberOfPurchases\":1.0,\"totalPurchase\":214960.0}");
     public static final Text CATEGORY_8_MAPREDUCE_OUTPUT = new Text(
-                    "{\"customerCategoryId\":8,\"customerCategoryDescription\":\"40-50 female\",\"products\":[]}");
+                    "{\"customerCategoryId\":8,\"customerCategoryDescription\":\"40-50 female\",\"products\":[],\"averageNumberOfViews\":6.0,\"averageNumberOfPurchases\":0.0,\"totalPurchase\":0.0}");
 
     static {
         CUSTOMER_CATEGORIES = initCustomerCategories();

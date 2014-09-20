@@ -10,11 +10,20 @@ public class CustomerSessionOutput {
     @JsonProperty
     public long customerCategoryId;
 
-    @JsonProperty(required = false)
+    @JsonProperty
     public String customerCategoryDescription;
 
     @JsonProperty
     public List<ProductOutput> products;
+
+    @JsonProperty
+    public float averageNumberOfViews;
+
+    @JsonProperty
+    public float averageNumberOfPurchases;
+
+    @JsonProperty
+    public float totalPurchase;
 
     public CustomerSessionOutput() {
         products = new ArrayList<ProductOutput>();
