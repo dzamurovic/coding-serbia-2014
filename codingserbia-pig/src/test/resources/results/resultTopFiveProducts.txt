@@ -1,0 +1,2 @@
+(5,45,55,male,1223,Bosch ugradna rerna HBA 23RN61,1)
+(6,55,65,male,1402,Samsung mikrotalasna rerna GE 82W,1)
