@@ -72,7 +72,7 @@ public class CustomerRecordsReducer extends Reducer<LongWritable, CustomerSessio
         outputJsonObj.customerCategoryDescription = aBag.customerCategoryDescription.toString();
         outputJsonObj.averageNumberOfViews = aBag.calculateAverageNumberOfViews();
         outputJsonObj.averageNumberOfPurchases = aBag.calculateAverageNumberOfPurchases();
-        outputJsonObj.totalPurchase = aBag.calculateTotalPurchase();
+        outputJsonObj.averagePurchase = aBag.calculateAveragePurchase();
         for (ProductWritable pw : topProducts) {
             outputJsonObj.products.add(new ProductOutput(pw.id.get(), pw.name.toString()));
         }

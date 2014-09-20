@@ -127,14 +127,15 @@ public class CustomerCategoryProductBag {
         return (float) numberOfPurchases / (float) numberOfSessions;
     }
 
-    public float calculateTotalPurchase() {
+    public float calculateAveragePurchase() {
         float amountInTotal = 0f;
 
         for (Iterator<LongWritable> iterator = purchasesByProduct.keySet().iterator(); iterator.hasNext();) {
-            amountInTotal += products.get(iterator.next()).price.get();
+            LongWritable key = iterator.next();
+            amountInTotal += products.get(key).price.get() * purchasesByProduct.get(key);
         }
 
-        return amountInTotal;
+        return numberOfPurchases != 0 ? amountInTotal / numberOfPurchases : 0f;
     }
 
 }

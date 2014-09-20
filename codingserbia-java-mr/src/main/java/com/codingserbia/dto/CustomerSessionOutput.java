@@ -23,7 +23,7 @@ public class CustomerSessionOutput {
     public float averageNumberOfPurchases;
 
     @JsonProperty
-    public float totalPurchase;
+    public float averagePurchase;
 
     public CustomerSessionOutput() {
         products = new ArrayList<ProductOutput>();

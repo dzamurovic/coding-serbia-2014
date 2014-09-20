@@ -1,4 +1,4 @@
-package com.codingserbia.dto;
+package com.codingserbia.datagenerator.json;
 
 import java.util.ArrayList;
 import java.util.List;
