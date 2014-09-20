@@ -1,2 +1,5 @@
-(5,45,55,male,1223,Bosch ugradna rerna HBA 23RN61,1)
-(6,55,65,male,1402,Samsung mikrotalasna rerna GE 82W,1)
+(4,30-40,male,1229,Candy ugradna rerna FS 635 AQUA,3)
+(5,40-50,male,1222,Bosch ugradna rerna HBA 23B252E,2)
+(5,40-50,male,1223,Bosch ugradna rerna HBA 23RN61,2)
+(5,40-50,male,1304,Panasonic televizor LED LCD TX-32AS400E,1)
+(5,40-50,male,1405,Samsung ugradna mikrotalasna rerna FG 87SST,1)
