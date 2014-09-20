@@ -1,4 +1,4 @@
-products = LOAD '/example/products/customer_records_map_reduce_input.json' USING JsonLoader('customerCategoryId:int,products:{(id:int,name:chararray,category:chararray,bought:boolean,price:double)}');
+products = LOAD '/example/products/customer_records_map_reduce_input.json' USING JsonLoader('sessionId:int,customerCategoryId:int,products:{(id:int,name:chararray,category:chararray,bought:boolean,price:double)}');
 
 categories = LOAD '/example/dimension/customer_categories.db' AS (categoryId:int,age:chararray,gender:chararray);
 
@@ -6,12 +6,14 @@ joinedRecords = JOIN categories BY categoryId, products BY customerCategoryId;
 
 --za svaku grupu korisnika prikazati top pet proizvoda koje grupa kupuje
 flattenedProducts = FOREACH joinedRecords GENERATE
+											   sessionId AS sessionId,
 	                                           categories::categoryId AS categoryId,
 	                                           categories::age AS age,
 	                                           categories::gender AS gender,
 	                                           FLATTEN(products);
 
 generatedProducts = FOREACH flattenedProducts GENERATE
+												   sessionId,
 		                                           categoryId,
 		                                           age,
 		                                           gender,
@@ -62,25 +64,23 @@ averageCountedProducts = FOREACH grpAverageSeenProducts GENERATE
 STORE averageCountedProducts INTO '/example/results/averageSeenProducts' USING JsonStorage();
 
 --prosecan broj kupljenih proizvoda po poseti
-averageBoughtProducts = FOREACH boughtProducts GENERATE
-													categoryId,
-													age,
-													gender,
-													TOBAG(name, id) AS products;
+groupedBySession = GROUP boughtProducts BY (sessionId, categoryId, age, gender);
 
-generatedCountedBoughtProducts = FOREACH averageBoughtProducts GENERATE
-																	categoryId,
-																	age,
-																	gender,
-																	COUNT(products) AS counter;
-
-groupedAverageBoughtProducts = GROUP generatedCountedBoughtProducts BY (categoryId, age, gender);
+averageBoughtProducts = FOREACH groupedBySession GENERATE
+													group.sessionId AS sessionId,
+													group.categoryId AS categoryId,
+													group.age AS age,
+													group.gender AS gender,
+													COUNT(boughtProducts.name) AS counter;
+													
+groupedAverageBoughtProducts = GROUP averageBoughtProducts BY (categoryId, age, gender);
 
 resultAverageBoughtProducts = FOREACH groupedAverageBoughtProducts GENERATE
 																		group.categoryId AS categoryId,
 																		group.age AS age,
 																		group.gender AS gender,
-																		AVG(generatedCountedBoughtProducts.counter) AS averageBought;
+																		AVG(averageBoughtProducts.counter) AS averageBought;
+
 STORE resultAverageBoughtProducts INTO '/example/results/averageBoughtProducts' USING JsonStorage();
 
 --prosecna kolicina potrosenih para

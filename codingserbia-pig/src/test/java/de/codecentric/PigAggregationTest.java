@@ -17,7 +17,7 @@ public class PigAggregationTest {
 	@BeforeClass
 	public static void setUp() throws IOException, ParseException {
 	    test = new PigTest("src/main/resources/example.pig");
-	    test.override("products", "products = LOAD '" + TEST_PATH + "input/customer_records_map_reduce_input.json' USING JsonLoader('customerCategoryId:int,products:{(id:int,name:chararray,category:chararray,bought:boolean,price:double)}');");
+	    test.override("products", "products = LOAD '" + TEST_PATH + "input/customer_records_map_reduce_input.json' USING JsonLoader('sessionId:int,customerCategoryId:int,products:{(id:int,name:chararray,category:chararray,bought:boolean,price:double)}');");
 	    test.override("categories", "categories = LOAD '" + TEST_PATH + "input/customer_categories.db' AS (categoryId:int,age:chararray,gender:chararray);");
 	}
 	
@@ -25,10 +25,10 @@ public class PigAggregationTest {
 	public void testTopFiveProducts() throws IOException, ParseException {
 	    test.assertOutput("resultTopFiveProducts", new File(TEST_PATH + "results/resultTopFiveProducts.txt"));
 	}
-	
+
 	@Test
 	public void testAverageSeenProducts() throws IOException, ParseException {
-	    test.assertOutput("averageSeenProducts", new File(TEST_PATH + "results/averageSeenProducts.txt"));
+	    test.assertOutput("averageCountedProducts", new File(TEST_PATH + "results/averageSeenProducts.txt"));
 	}
 	
 	@Test
@@ -40,5 +40,5 @@ public class PigAggregationTest {
 	public void testAverageSpent() throws IOException, ParseException {
 	    test.assertOutput("averagePrice", new File(TEST_PATH + "results/averagePrice.txt"));
 	}
-	
+
 }
