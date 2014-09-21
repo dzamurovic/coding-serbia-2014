@@ -1,0 +1,33 @@
+|		size \ job			|	pig_2 (2 store cmds)	|	pig_4 (4 store cmds)	|		java		|
+|---------------------------|---------------------------|---------------------------|-------------------|
+| small (150000/103MB)		|		4m 05s		8/5		|		3m 20s		6/4		|		0m 40s		|
+| medium (750000/517MB) 	|		7m 40s		13/5	|		6m 20s		10/4	|		1m 20s		|
+| large (1500000/1GB)		|		10m 30s		19/6	|		9m 30s		16/5	|		2m 30s		|
+| x-large (2250000/1.5GB)	|		13m 30s		26/6	|		12m 50s		23/5	|		3m 30s		|
+|---------------------------|---------------------------|---------------------------|-------------------|
+
+java MR
+	- ~20s startup for MR job
+
+pig MR
+	- ~15s startup for each MR job
+
+pig_4
+	- number of jobs: 4
+
+JobId	Maps	Reduces	MaxMapTime	MinMapTIme	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1411321226370_0027	9	2	93	42	86	92	135	133	134	134	categories,joinedRecords,products	HASH_JOIN	
+job_1411321226370_0028	5	1	208	119	187	203	94	94	94	94	averageBoughtProducts,averageCountedProducts,averagePrice,averageSeenProducts,boughtProducts,countedProducts,flattenedProducts,generatedProducts,groupedAveragePrice,groupedBySession,groupedProducts,grpAverageSeenProducts	MULTI_QUERY,COMBINER	/codingserbia/results/averagePrice,/codingserbia/results/averageSeenProducts,
+job_1411321226370_0029	1	1	16	16	16	16	14	14	14	14	groupTopFiveProducts,resultTopFiveProducts,sorted,topProducts	GROUP_BY	/codingserbia/results/topTenProducts,
+job_1411321226370_0030	1	1	30	30	30	30	8	8	8	8	groupedAverageBoughtProducts,resultAverageBoughtProducts	GROUP_BY,COMBINER	/codingserbia/results/averageBoughtProducts,
+
+
+pig_2
+	- number of jobs: 5
+
+JobId	Maps	Reduces	MaxMapTime	MinMapTIme	AvgMapTime	MedianMapTime	MaxReduceTime	MinReduceTime	AvgReduceTime	MedianReducetime	Alias	Feature	Outputs
+job_1411321226370_0022	5	1	86	34	75	85	71	71	71	71	categories,joinedRecords,products	HASH_JOIN	
+job_1411321226370_0023	3	1	138	57	111	136	84	84	84	84	averageBoughtProducts,averageCountedProducts,averagePrice,averageSeenProducts,boughtProducts,countedProducts,flattenedProducts,generatedProducts,groupedAveragePrice,groupedBySession,groupedProducts,grpAverageSeenProducts	MULTI_QUERY,COMBINER	
+job_1411321226370_0024	1	1	24	24	24	24	12	12	12	12	groupedAverageBoughtProducts,resultAverageBoughtProducts	GROUP_BY,COMBINER	
+job_1411321226370_0025	1	1	14	14	14	14	15	15	15	15	groupTopFiveProducts,resultTopFiveProducts,sorted,topProducts	GROUP_BY	/codingserbia/results/topTenProducts,
+job_1411321226370_0026	3	1	18	18	18	18	7	7	7	7	finalResult,joinedFinal	HASH_JOIN	/codingserbia/results/productsStatistic,
