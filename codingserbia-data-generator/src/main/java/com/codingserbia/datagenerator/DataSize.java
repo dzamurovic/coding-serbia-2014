@@ -4,9 +4,9 @@ public enum DataSize {
 
     S(3);
 
-    // S(100000);
-    // M(10000000);
-    // L(50000000);
+    // S(150000);
+    // M(7500000);
+    // L(15000000);
 
     private DataSize(int size) {
         this.size = size;
