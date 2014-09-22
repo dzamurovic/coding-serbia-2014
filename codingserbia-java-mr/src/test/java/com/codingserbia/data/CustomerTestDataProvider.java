@@ -31,7 +31,7 @@ public class CustomerTestDataProvider {
     public static final Text CATEGORY_5_MAPREDUCE_OUTPUT = new Text(
                     "{\"customerCategoryId\":5,\"customerCategoryDescription\":\"40-50 male\",\"products\":[{\"id\":1223,\"name\":\"Bosch ugradna rerna HBA 23RN61\"},{\"id\":1222,\"name\":\"Bosch ugradna rerna HBA 23B252E\"},{\"id\":1405,\"name\":\"Samsung ugradna mikrotalasna rerna FG 87SST\"},{\"id\":1304,\"name\":\"Panasonic televizor LED LCD TX-32AS400E\"}],\"averageNumberOfViews\":2.0,\"averageNumberOfPurchases\":1.0,\"averagePurchase\":57823.332}");
     public static final Text CATEGORY_8_MAPREDUCE_OUTPUT = new Text(
-                    "{\"customerCategoryId\":8,\"customerCategoryDescription\":\"40-50 female\",\"products\":[],\"averageNumberOfViews\":6.0,\"averageNumberOfPurchases\":0.0,\"averagePurchase\":0.0}");
+                    "{\"customerCategoryId\":8,\"customerCategoryDescription\":\"18-24 female\",\"products\":[],\"averageNumberOfViews\":6.0,\"averageNumberOfPurchases\":0.0,\"averagePurchase\":0.0}");
 
     static {
         CUSTOMER_CATEGORIES = initCustomerCategories();
@@ -75,7 +75,7 @@ public class CustomerTestDataProvider {
                     CUSTOMER_RECORDS_FOR_REDUCER_INPUT_CATEGORY_4
                                     .add(new CustomerSessionWritable("30-40 male", jsonObj));
                 } else if (jsonObj.customerCategoryId == 8L) {
-                    CUSTOMER_RECORDS_FOR_REDUCER_INPUT_CATEGORY_8.add(new CustomerSessionWritable("40-50 female",
+                    CUSTOMER_RECORDS_FOR_REDUCER_INPUT_CATEGORY_8.add(new CustomerSessionWritable("18-24 female",
                                     jsonObj));
                 }
             } catch (Exception exc) {
