@@ -76,23 +76,4 @@ public class CustomerRecordsMapper extends Mapper<LongWritable, Text, LongWritab
         br.close();
     }
 
-    // private void loadCustomerCategoriesFromLocalFileSystem(String filePath) {
-    // LOGGER.info("Customer categories path: " + filePath);
-    // try {
-    // BufferedReader br = new BufferedReader(new FileReader(new File(filePath)));
-    // String line;
-    // while ((line = br.readLine()) != null) {
-    // String[] columns = line.split("\t");
-    // long categoryId = Long.valueOf(columns[0]);
-    // String description = columns[1] + " " + columns[2];
-    // String gender = columns[2];
-    // CustomerCategoryWritable writable = new CustomerCategoryWritable(categoryId, description, gender);
-    // groupedCategories.put(writable.categoryId, writable);
-    // }
-    // br.close();
-    // } catch (Exception e) {
-    // LOGGER.error(e.getMessage(), e);
-    // }
-    // }
-
 }
