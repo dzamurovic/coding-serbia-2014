@@ -32,7 +32,7 @@ public class CodingSerbiaMapReduce extends Configured implements Tool {
     }
 
     public static void main(String[] args) throws Exception {
-        System.setProperty("hadoop.home.dir", "C:/work/tools/hadoop-common-2.2.0-bin-master");
+        // System.setProperty("hadoop.home.dir", "C:/work/tools/hadoop-common-2.2.0-bin-master");
 
         Configuration config = new Configuration();
         CodingSerbiaMapReduce mr = new CodingSerbiaMapReduce(config);
@@ -70,7 +70,8 @@ public class CodingSerbiaMapReduce extends Configured implements Tool {
             throw new RuntimeException("Input validation failed.");
         }
 
-        Job job = Job.getInstance(getConf());
+        // Job job = Job.getInstance(getConf());
+        Job job = new Job(getConf());
         job.setMapOutputKeyClass(LongWritable.class);
         job.setMapOutputValueClass(CustomerSessionWritable.class);
 
